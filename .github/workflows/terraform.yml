@@ -88,7 +88,18 @@ jobs:
     #   run: terraform fmt -check -diff
 
     - name: Terraform Plan
-      run: terraform plan -input=false
+      run: terraform plan -input=false -out=tfplan
+
+    - name: Save Plan (human readable)
+      run: terraform show -no-color tfplan > plan.txt
+
+    - name: Upload plan artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: tf-plan
+        path: |
+          tfplan
+          plan.txt
 
   apply:
     name: 'Terraform Apply'
@@ -120,6 +131,12 @@ jobs:
     - name: Terraform Init
       run: terraform init
 
+    - name: Download plan artifact
+      uses: actions/download-artifact@v4
+      with:
+        name: tf-plan
+        path: .
+
     - name: Terraform Apply
-      run: terraform apply -auto-approve -input=false
+      run: terraform apply -input=false tfplan -auto-approve
 # ...existing code...
