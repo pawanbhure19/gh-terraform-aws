@@ -9,6 +9,7 @@
     provider "aws" {
         region = var.region
     }
+    
 
     resource "aws_security_group" "example" {
         name        = "example"
