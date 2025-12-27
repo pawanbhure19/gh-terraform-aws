@@ -72,7 +72,7 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
-        role-to-assume: arn:aws:iam::123456789012:role/GithubActionsTerraformRole
+        role-to-assume: arn:aws:iam::982815949438:role/gh-action
         aws-region: us-east-1
 # ...existing code...
 
