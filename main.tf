@@ -17,7 +17,8 @@
             region = "us-east-1"
         }
     } 
-      
+
+
 
     resource "aws_security_group" "example" {
         name        = "example"
