@@ -138,5 +138,5 @@ jobs:
         path: .
 
     - name: Terraform Apply
-      run: terraform apply -input=false tfplan -auto-approve
+      run: terraform apply -input=false -auto-approve tfplan
 # ...existing code...
