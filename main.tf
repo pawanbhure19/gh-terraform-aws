@@ -9,7 +9,14 @@
     provider "aws" {
         region = var.region
     }
-    
+
+    terraform {
+        backend "s3" {
+            bucket = "my-terraform-state-bucket-exist" 
+            key    = "terraform.tfstate"
+            region = "us-east-1"
+        }
+    }   
 
     resource "aws_security_group" "example" {
         name        = "example"
